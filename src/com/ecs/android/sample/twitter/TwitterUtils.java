@@ -1,6 +1,10 @@
 package com.ecs.android.sample.twitter;
 
+import java.util.List;
+
 import oauth.signpost.OAuth;
+import twitter4j.ResponseList;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -37,4 +41,17 @@ public class TwitterUtils {
 		twitter.setOAuthAccessToken(a);
         twitter.updateStatus(msg);
 	}	
+	
+	public static List<Status> getTweets(SharedPreferences prefs) throws Exception {
+		String token = prefs.getString(OAuth.OAUTH_TOKEN, "");
+		String secret = prefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
+		
+		AccessToken a = new AccessToken(token,secret);
+		Twitter twitter = new TwitterFactory().getInstance();
+		twitter.setOAuthConsumer(Constants.CONSUMER_KEY, Constants.CONSUMER_SECRET);
+		twitter.setOAuthAccessToken(a);
+        ResponseList<Status> rl = twitter.getHomeTimeline();
+        return rl;
+	}	
+	 
 }

@@ -2,4 +2,8 @@
 <resources>
     <string name="hello">Hello World, AndroidTwitterSample!</string>
     <string name="app_name">AndroidTwitterSample</string>
+    <string name="no_tweets">No Tweets Yet</string>
+    <string name="refresh_tweets">Refresh</string>
+    <string name="clear_login_info">Clear Login Info</string>
+    <string name="login">Login</string>
 </resources>
